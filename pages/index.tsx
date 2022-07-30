@@ -81,8 +81,9 @@ const Home: NextPage = () => {
         <div className="flex flex-row flex-wrap w-1/2 overflow-scroll">
           {icons
             .filter((icon) => icon.includes(query))
-            .map((icon) => (
+            .map((icon, index) => (
               <Card
+                key={index}
                 src={`/assets/rounded/${icon}.svg`}
                 onClick={() => setSelectedIcon(icon)}
               />
@@ -90,8 +91,8 @@ const Home: NextPage = () => {
         </div>
 
         <div className="flex flex-row flex-wrap content-start w-1/2 h-full">
-          {iconStyles.map((style) => (
-            <Icon src={`/assets/${style}/${selectedIcon}.png`} />
+          {iconStyles.map((style, index) => (
+            <Icon key={index} src={`/assets/${style}/${selectedIcon}.png`} />
           ))}
         </div>
       </div>
