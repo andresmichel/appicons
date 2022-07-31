@@ -17,32 +17,26 @@ const iconStyles = [
   "iBook",
 ];
 
-const Icon = (props: { src: string }) => {
+const Icon = (props: { src: string; alt: string }) => {
   return (
     <div className="flex w-1/4 justify-center">
       <div className="p-2">
         <a
           href={props.src}
           download
-          className="flex shadow-md"
-          style={{ height: 100, width: 100, borderRadius: 23 }}
+          className="flex shadow-md h-16 lg:h-24 w-16 lg:w-24 rounded-2xl lg:rounded-3xl overflow-hidden"
         >
-          <Image
-            height={100}
-            width={100}
-            style={{ borderRadius: 23 }}
-            src={props.src}
-          />
+          <Image height={100} width={100} src={props.src} alt={props.alt} />
         </a>
       </div>
     </div>
   );
 };
 
-const Card = (props: { src: string; onClick: () => void }) => (
+const Card = (props: { src: string; alt: string; onClick: () => void }) => (
   <div className="flex w-1/4" onClick={props.onClick}>
     <div className="flex justify-center items-center m-2 w-full h-20 hover:bg-gray-100 rounded border border-gray-200 cursor-pointer">
-      <img height={32} width={32} src={props.src} />
+      <Image height={32} width={32} src={props.src} alt={props.alt} />
     </div>
   </div>
 );
@@ -85,6 +79,7 @@ const Home: NextPage = () => {
               <Card
                 key={index}
                 src={`/assets/rounded/${icon}.svg`}
+                alt={icon}
                 onClick={() => setSelectedIcon(icon)}
               />
             ))}
@@ -92,7 +87,11 @@ const Home: NextPage = () => {
 
         <div className="flex flex-row flex-wrap content-start w-full lg:w-1/2 h-full">
           {iconStyles.map((style, index) => (
-            <Icon key={index} src={`/assets/${style}/${selectedIcon}.png`} />
+            <Icon
+              key={index}
+              src={`/assets/${style}/${selectedIcon}.png`}
+              alt={selectedIcon}
+            />
           ))}
         </div>
       </div>
