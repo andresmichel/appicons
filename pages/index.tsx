@@ -77,8 +77,8 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto flex flex-row h-full">
-        <div className="flex flex-row flex-wrap w-1/2 overflow-scroll">
+      <div className="container mx-auto flex flex-col lg:flex-row h-full">
+        <div className="flex flex-row flex-wrap w-full lg:w-1/2 overflow-scroll">
           {icons
             .filter((icon) => icon.includes(query))
             .map((icon, index) => (
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
             ))}
         </div>
 
-        <div className="flex flex-row flex-wrap content-start w-1/2 h-full">
+        <div className="flex flex-row flex-wrap content-start w-full lg:w-1/2 h-full">
           {iconStyles.map((style, index) => (
             <Icon key={index} src={`/assets/${style}/${selectedIcon}.png`} />
           ))}
