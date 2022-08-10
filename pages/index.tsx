@@ -1,45 +1,13 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import icons from "../icons.js";
 import { useState } from "react";
+import Head from "next/head";
+import "material-symbols";
 
-const iconStyles = [
-  "apple-music",
-  "facetime_old",
-  "settings",
-  "files_style",
-  "dev",
-  "App Store",
-  "Calculator",
-  "Clock",
-  "FaceTime",
-  "iBook",
-];
+import icons from "../src/icons.js";
+import iconStyles from '../src/styles';
 
-const Icon = (props: { src: string; alt: string; onClick: () => void }) => {
-  return (
-    <div className="flex w-1/4 justify-center" onClick={props.onClick}>
-      <div className="p-2">
-        <a
-          href={props.src}
-          download
-          className="flex shadow-md h-16 lg:h-24 w-16 lg:w-24 rounded-2xl lg:rounded-3xl overflow-hidden"
-        >
-          <Image height={100} width={100} src={props.src} alt={props.alt} />
-        </a>
-      </div>
-    </div>
-  );
-};
-
-const Card = (props: { src: string; alt: string; onClick: () => void }) => (
-  <div className="flex w-1/4" onClick={props.onClick}>
-    <div className="flex justify-center items-center m-2 w-full h-20 hover:bg-gray-100 rounded border border-gray-200 cursor-pointer">
-      <Image height={32} width={32} src={props.src} alt={props.alt} />
-    </div>
-  </div>
-);
+import Icon from "../src/components/Icon";
+import Card from "../src/components/Card";
 
 const Home: NextPage = () => {
   const [query, setQuery] = useState("");
@@ -55,7 +23,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
-          href={`/assets/${selectedStyle}/${selectedIcon}.png`}
+          href={`/assets/${selectedStyle.name}/${selectedIcon}-fill.png`}
         ></link>
       </Head>
 
@@ -83,6 +51,7 @@ const Home: NextPage = () => {
             .map((icon, index) => (
               <Card
                 key={index}
+                name={icon}
                 src={`/assets/rounded/${icon}.svg`}
                 alt={icon}
                 onClick={() => setSelectedIcon(icon)}
@@ -90,15 +59,30 @@ const Home: NextPage = () => {
             ))}
         </div>
 
-        <div className="flex flex-row flex-wrap content-start w-full lg:w-1/2 h-full">
-          {iconStyles.map((style, index) => (
+        <div className="flex flex-col w-full lg:w-1/2 h-full items-center">
+          <div className="flex flex-row flex-wrap mb-4">
+            {iconStyles
+            .filter(style => style.enabled)
+            .map((style, index) => (
+              <div
+                className={`m-1 h-6 w-6 cursor-pointer rounded-full border`}
+                style={{
+                  background: `linear-gradient(${style.gradient?.[0]}, ${style.gradient?.[1]})`,
+                  backgroundColor: style.color,
+                }}
+                onClick={() => setSelectedStyle(style)}
+              />
+            ))}
+          </div>
+          <div>
             <Icon
-              key={index}
-              src={`/assets/${style}/${selectedIcon}.png`}
+              src={`/assets/${selectedStyle.name}/${selectedIcon}-fill.png`}
               alt={selectedIcon}
-              onClick={() => setSelectedStyle(style)}
+              onClick={() => {
+                //
+              }}
             />
-          ))}
+          </div>
         </div>
       </div>
     </div>
