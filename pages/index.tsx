@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
-          href={`/assets/${selectedStyle.name}/${selectedIcon}-fill.png`}
+          href={`/assets/${selectedStyle.name}/${selectedIcon}.png`}
         ></link>
       </Head>
 
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
           </div>
           <div>
             <Icon
-              src={`/assets/${selectedStyle.name}/${selectedIcon}-fill.png`}
+              src={`/assets/${selectedStyle.name}/${selectedIcon}.png`}
               alt={selectedIcon}
               onClick={() => {
                 //
