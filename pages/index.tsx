@@ -4,7 +4,7 @@ import Head from "next/head";
 import "material-symbols";
 
 import icons from "../src/icons.js";
-import iconStyles from '../src/styles';
+import iconStyles from "../src/styles";
 
 import Icon from "../src/components/Icon";
 import Card from "../src/components/Card";
@@ -62,17 +62,18 @@ const Home: NextPage = () => {
         <div className="flex flex-col w-full lg:w-1/2 h-full items-center">
           <div className="flex flex-row flex-wrap mb-4">
             {iconStyles
-            .filter(style => style.enabled)
-            .map((style, index) => (
-              <div
-                className={`m-1 h-6 w-6 cursor-pointer rounded-full border`}
-                style={{
-                  background: `linear-gradient(${style.gradient?.[0]}, ${style.gradient?.[1]})`,
-                  backgroundColor: style.color,
-                }}
-                onClick={() => setSelectedStyle(style)}
-              />
-            ))}
+              .filter((style) => style.enabled)
+              .map((style, index) => (
+                <div
+                  key={index}
+                  className={`m-1 h-6 w-6 cursor-pointer rounded-full border`}
+                  style={{
+                    background: `linear-gradient(${style.gradient?.[0]}, ${style.gradient?.[1]})`,
+                    backgroundColor: style.color,
+                  }}
+                  onClick={() => setSelectedStyle(style)}
+                />
+              ))}
           </div>
           <div>
             <Icon
