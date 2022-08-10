@@ -30,7 +30,7 @@ const iconStyles = [
     gradient: ["#65C068", "#56B453"],
   },
   {
-    enabled: false,
+    enabled: true,
     name: "Aqua",
     color: "#53C7AD",
     gradient: ["#53C7AD", "#27BFA1"],
