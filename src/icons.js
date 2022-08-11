@@ -1,4 +1,4 @@
-export default [
+const icons = [
   "ac_unit-fill",
   "accessible-fill",
   "account_circle-fill",
@@ -4581,3 +4581,5 @@ export default [
   "zoom_out_map-fill",
   // "zoom_out_map",
 ];
+
+export default icons;
