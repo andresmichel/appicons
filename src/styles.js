@@ -49,7 +49,7 @@ const iconStyles = [
     gradient: ["#56C4D6", "#3BBBD0"],
   },
   {
-    enabled: false,
+    enabled: true,
     name: "Blue",
     path: "blue",
     color: "#4DAEEA",
