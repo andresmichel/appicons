@@ -5,6 +5,7 @@ import "material-symbols";
 
 import icons from "../src/icons.js";
 import iconStyles from "../src/styles";
+import config from '../src/config.json';
 
 import Icon from "../src/components/Icon";
 import Card from "../src/components/Card";
@@ -23,7 +24,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
-          href={`/assets/${selectedStyle.path}/${selectedIcon}.png`}
+          href={`${config.baseURL}/${selectedStyle.path}/${selectedIcon}.png`}
         />
       </Head>
 
@@ -52,7 +53,7 @@ const Home: NextPage = () => {
               <Card
                 key={index}
                 name={icon}
-                src={`/assets/rounded/${icon}.svg`}
+                src={`${config.baseURL}/rounded/${icon}.svg`}
                 alt={icon}
                 onClick={() => setSelectedIcon(icon)}
               />
@@ -77,7 +78,7 @@ const Home: NextPage = () => {
           </div>
           <div>
             <Icon
-              src={`/assets/${selectedStyle.path}/${selectedIcon}.png`}
+              src={`${config.baseURL}/${selectedStyle.path}/${selectedIcon}.png`}
               alt={selectedIcon}
               onClick={() => {
                 //
