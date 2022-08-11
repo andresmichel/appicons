@@ -23,8 +23,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
-          href={`/assets/${selectedStyle.name}/${selectedIcon}.png`}
-        ></link>
+          href={`/assets/${selectedStyle.path}/${selectedIcon}.png`}
+        />
       </Head>
 
       <div className="bg-blue-400 w-full">
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
             placeholder="Search..."
             className="w-full h-12 px-2 focus:outline-0"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value.toLowerCase())}
           />
         </div>
       </div>
