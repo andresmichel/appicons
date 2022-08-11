@@ -77,7 +77,7 @@ const Home: NextPage = () => {
           </div>
           <div>
             <Icon
-              src={`/assets/${selectedStyle.name}/${selectedIcon}.png`}
+              src={`/assets/${selectedStyle.path}/${selectedIcon}.png`}
               alt={selectedIcon}
               onClick={() => {
                 //
